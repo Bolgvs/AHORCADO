@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Color;
 
+
 public class AhorcadoWindow {
 	private JFrame frame;
 
@@ -80,11 +81,72 @@ public class AhorcadoWindow {
 		JButton btnNewButton_7 = new JButton("H");
 		panel.add(btnNewButton_7);
 		
+		JButton btnNewButton_8 = new JButton("I");
+		panel.add(btnNewButton_8);
+		
+		JButton btnNewButton_9 = new JButton("J");
+		panel.add(btnNewButton_9);
+		
+		JButton btnNewButton_10 = new JButton("K");
+		panel.add(btnNewButton_10);
+		
+		JButton btnNewButton_11 = new JButton("L");
+		panel.add(btnNewButton_11);
+		
+		JButton btnNewButton_12 = new JButton("M");
+		panel.add(btnNewButton_12);
+		
+		JButton btnNewButton_13 = new JButton("N");
+		panel.add(btnNewButton_13);
+		
+		JButton btnNewButton_14 = new JButton("Ñ");
+		panel.add(btnNewButton_14);
+		
+		JButton btnNewButton_15 = new JButton("O");
+		panel.add(btnNewButton_15);
+		
+		JButton btnNewButton_16 = new JButton("P");
+		panel.add(btnNewButton_16);
+		
+		JButton btnNewButton_17 = new JButton("Q");
+		panel.add(btnNewButton_17);
+		
+		JButton btnNewButton_18 = new JButton("R");
+		panel.add(btnNewButton_18);
+		
+		JButton btnNewButton_19 = new JButton("S");
+		panel.add(btnNewButton_19);
+		
+		JButton btnNewButton_20 = new JButton("T");
+		panel.add(btnNewButton_20);
+		
+		JButton btnNewButton_21 = new JButton("U");
+		panel.add(btnNewButton_21);
+		
+		JButton btnNewButton_22 = new JButton("V");
+		panel.add(btnNewButton_22);
+		
+		JButton btnNewButton_23 = new JButton("W");
+		panel.add(btnNewButton_23);
+		
+		JButton btnNewButton_24 = new JButton("X");
+		panel.add(btnNewButton_24);
+		
+		JButton btnNewButton_25 = new JButton("Y");
+		panel.add(btnNewButton_25);
+		
+		JButton btnNewButton_26 = new JButton("Z");
+		panel.add(btnNewButton_26);
+		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(0, 23, 224, 111);
 		frame.getContentPane().add(panel_2);
 		
+		JButton btnNewButton_27 = new JButton("Iniciar juego");
+		panel_2.add(btnNewButton_27);
+		
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.WHITE);
 		panel_1.setBounds(0, 242, 224, 48);
 		frame.getContentPane().add(panel_1);
 		
