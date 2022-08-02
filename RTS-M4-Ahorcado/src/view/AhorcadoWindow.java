@@ -9,6 +9,10 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JDesktopPane;
+import javax.swing.JFormattedTextField;
+import javax.swing.JPasswordField;
+import javax.swing.JEditorPane;
 
 
 public class AhorcadoWindow {
@@ -43,7 +47,7 @@ public class AhorcadoWindow {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBackground(new Color(240, 240, 240));
-		frame.setBounds(100, 100, 499, 531);
+		frame.setBounds(100, 100, 499, 597);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -56,7 +60,7 @@ public class AhorcadoWindow {
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 314, 224, 167);
+		panel.setBounds(0, 314, 224, 233);
 		frame.getContentPane().add(panel);
 		
 		JButton btnNewButton_1 = new JButton("A");
@@ -168,7 +172,7 @@ public class AhorcadoWindow {
 		frame.getContentPane().add(panel_3);
 		
 		JPanel panel_4 = new JPanel();
-		panel_4.setBounds(234, 11, 239, 470);
+		panel_4.setBounds(234, 11, 239, 536);
 		frame.getContentPane().add(panel_4);
 	}
 }
