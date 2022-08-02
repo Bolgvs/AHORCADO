@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class AhorcadoWindow {
@@ -144,6 +146,13 @@ public class AhorcadoWindow {
 		
 		JButton btnNewButton_27 = new JButton("Iniciar juego");
 		panel_2.add(btnNewButton_27);
+		
+		JButton btnNewButton_28 = new JButton("Resolver");
+		btnNewButton_28.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		panel_2.add(btnNewButton_28);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.WHITE);
