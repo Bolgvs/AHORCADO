@@ -2,19 +2,11 @@ package view;
 
 import java.awt.EventQueue;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JLayeredPane;
 import java.awt.Color;
-import java.awt.Canvas;
-import java.awt.ScrollPane;
-import javax.swing.JInternalFrame;
-import javax.swing.JSplitPane;
-import javax.swing.JToolBar;
-import java.awt.Panel;
 
 public class AhorcadoWindow {
 	private JFrame frame;
