@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JEditorPane;
 import java.awt.GridLayout;
+import java.awt.GridBagLayout;
+import java.awt.BorderLayout;
 
 
 public class AhorcadoWindow {
@@ -49,20 +51,16 @@ public class AhorcadoWindow {
 		
 		JLabel lblMenu = new JLabel("Menu");
 		lblMenu.setBounds(10, 11, 46, 14);
-		frame.getContentPane().add(lblMenu);
 		
 		JLabel lblTeclado = new JLabel("Teclado");
 		lblTeclado.setBounds(10, 283, 46, 14);
-		frame.getContentPane().add(lblTeclado);
 		
 		JPanel panelLetras_1 = new JPanel();
 		panelLetras_1.setBackground(Color.BLACK);
 		panelLetras_1.setBounds(10, 213, 224, 48);
-		frame.getContentPane().add(panelLetras_1);
 		
 		JLabel lblPalabraSecreta = new JLabel("Palabra secreta");
 		lblPalabraSecreta.setBounds(10, 188, 129, 14);
-		frame.getContentPane().add(lblPalabraSecreta);
 		
 		JButton btnA = new JButton("A");
 		btnA.setBounds(10, 308, 46, 23);
@@ -139,7 +137,7 @@ public class AhorcadoWindow {
 		JButton btnX = new JButton("X");
 		btnX.setBounds(193, 400, 46, 23);
 		
-		JButton btnNN = new JButton("Ñ");
+		JButton btnNN = new JButton("Ã‘");
 		btnNN.setBounds(193, 354, 46, 23);
 		
 		JButton btnD = new JButton("D");
@@ -147,11 +145,9 @@ public class AhorcadoWindow {
 		
 		JEditorPane editorPane = new JEditorPane();
 		editorPane.setBounds(10, 142, 224, 35);
-		frame.getContentPane().add(editorPane);
 		
 		JPanel panelLetras = new JPanel();
-		panelLetras.setBounds(10, 308, 214, 181);
-		frame.getContentPane().add(panelLetras);
+		panelLetras.setBounds(10, 308, 238, 181);
 		panelLetras.setLayout(new GridLayout(0, 5, 1, 0));
 		
 		panelLetras.add(btnA);
@@ -210,13 +206,40 @@ public class AhorcadoWindow {
 		
 		JPanel panelIniciar = new JPanel();
 		panelIniciar.setBounds(10, 36, 163, 77);
-		frame.getContentPane().add(panelIniciar);
 		panelIniciar.setLayout(new GridLayout(2, 0, 0, 2));
 		
 		JButton btnResolver = new JButton("Resolver");
-		panelIniciar.add(btnResolver);
 		
 		JButton btnIniciar = new JButton("Iniciar juego");
-		panelIniciar.add(btnIniciar);
+		
+		JPanel panel_menu = new JPanel();
+		panel_menu.setBounds(1, 11, 179, 120);
+		panel_menu.setLayout(new GridLayout(3, 0, 0, 0));
+		panel_menu.add(lblMenu);
+		panel_menu.add(btnResolver);
+		panel_menu.add(btnIniciar);
+		
+		JPanel panel_palabra = new JPanel();
+		panel_palabra.setBounds(1, 142, 167, 142);
+		panel_palabra.setLayout(new GridLayout(3, 0, 0, 0));
+		panel_palabra.add( editorPane);
+		panel_palabra.add(lblPalabraSecreta);
+		panel_palabra.add(panelLetras_1);
+		
+		JPanel panel_teclado = new JPanel();
+		panel_teclado.setBounds(185, 106, 167, 166);
+		panel_teclado.setLayout(new BorderLayout(0, 0));
+		panel_teclado.add(lblTeclado, BorderLayout.NORTH);
+		panel_teclado.add(panelLetras, BorderLayout.CENTER);
+		
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(10, 11, 250, 478);
+		frame.getContentPane().add(panel);
+		panel.setLayout(new BorderLayout(0, 10));
+		
+		panel.add(panel_menu, BorderLayout.NORTH);
+		panel.add(panel_palabra, BorderLayout.CENTER);
+		panel.add(panel_teclado, BorderLayout.SOUTH);
 	}
 }
