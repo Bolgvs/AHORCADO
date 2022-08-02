@@ -34,7 +34,8 @@ public class Partida {
 	}
 	
 	public void actualizarPalabraOculta(char a) {
-		
+		//Generate the word that will show on screen
+		palabraOculta="";
 		for (int i = 0; i < palabraArray.length; i++) {
 			if (letras.contains(palabraArray[i]))
 				palabraOculta += palabraArray[i] + " ";
