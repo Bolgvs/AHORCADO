@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import javax.swing.JButton;
+
 public class Partida {
 	private String[] arrayPalabras = {"uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"};
 	private List<String> palabras = Arrays.asList(arrayPalabras);
@@ -43,13 +45,15 @@ public class Partida {
 		}
 	}
 	
-	public void comprobarLetra(char a, Button b) {
-		if (!contieneLetra(a)) {
+	public void comprobarLetra(JButton b) {
+		char letraBoton = b.getText().charAt(0);
+		
+		if (!contieneLetra(letraBoton)) {
 			intentos--;
 		}
 		
 		b.setEnabled(false);
-		actualizarPalabraOculta(a);
+		actualizarPalabraOculta(letraBoton);
 	}
 	
 	public String getPalabraOculta() {
