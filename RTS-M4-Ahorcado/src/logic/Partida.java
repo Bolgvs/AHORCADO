@@ -169,9 +169,6 @@ public class Partida {
 		
 		escogerPalabra();
 		
-
-		System.out.println(this.palabra);
-		
 		// Dummy
 		actualizarPalabraOculta('�');
 	}
@@ -184,8 +181,6 @@ public class Partida {
 		this.intentos = 10;
 		
 		escogerPalabra();
-		
-		System.out.println(this.palabra);
 
 		// Dummy
 		actualizarPalabraOculta('�');

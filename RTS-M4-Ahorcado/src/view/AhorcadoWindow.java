@@ -407,7 +407,6 @@ public class AhorcadoWindow {
 			case principiante:
 				imagename = "images/Hangman sprite 10/hangman0" + (intentos) + "i.jpg"; 
 				imageIcon = new ImageIcon(getClass().getClassLoader().getResource(imagename));
-				System.out.println(imagename);
 				image = imageIcon.getImage();
 
 				newimg = image.getScaledInstance(panelImagen.getSize().height, panelImagen.getSize().width,  java.awt.Image.SCALE_SMOOTH);
@@ -424,7 +423,6 @@ public class AhorcadoWindow {
 			case intermedio:
 				imagename = "images/Hangman sprite 10/hangman0" + (intentos) + "i.jpg"; 
 				imageIcon = new ImageIcon(getClass().getClassLoader().getResource(imagename));
-				System.out.println(imagename);
 				image = imageIcon.getImage();
 				
 				newimg = image.getScaledInstance(panelImagen.getSize().height, panelImagen.getSize().width,  java.awt.Image.SCALE_SMOOTH);
@@ -441,7 +439,6 @@ public class AhorcadoWindow {
 			case avanzado:
 				imagename = "images/Hangman sprite 10/hangman0" + (intentos) + "i.jpg"; 
 				imageIcon = new ImageIcon(getClass().getClassLoader().getResource(imagename));
-				System.out.println(imagename);
 				image = imageIcon.getImage();
 				
 				newimg = image.getScaledInstance(panelImagen.getSize().height, panelImagen.getSize().width,  java.awt.Image.SCALE_SMOOTH);
