@@ -327,17 +327,6 @@ public class AhorcadoWindow {
 		
 		btnPlay.setBounds(218, 205, 117, 25);
 		panelInicio.add(btnPlay);
-		
-		/*
-		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		InputStream input = classLoader.getResourceAsStream("/images/hangman_sprite/hangman00i.jpg");
-		try {
-			Image logo = ImageIO.read(input);
-			panelImagen.add(logo);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		*/
 	}
 	
 	private void visibilidadBotones(boolean estanActivos) {
