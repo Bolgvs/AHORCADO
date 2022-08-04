@@ -15,10 +15,9 @@ public class Partida {
 	
 	private String palabraOculta = new String();
 	private List<Character> letras;
-	
+
 	private char[] palabraArray = palabra.toCharArray();
-	
-	
+
 	private void escogerPalabra() {
 		// Generate random integer to select a word from the string array
 		Random rand = new Random();
@@ -53,4 +52,8 @@ public class Partida {
 		actualizarPalabraOculta(a);
 	}
 	
+	public String getPalabraOculta() {
+		return palabraOculta;
+	}
+
 }
