@@ -2,6 +2,8 @@ package view;
 
 import java.awt.EventQueue;
 
+import javax.swing.AbstractButton;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,6 +16,7 @@ import java.awt.Color;
 import java.awt.Component;
 
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
@@ -23,10 +26,11 @@ import java.awt.Font;
 public class AhorcadoWindow {
 	private JFrame frame;
 	private Partida partida;
-	private char[] alfabeto = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+	private char[] alfabeto = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'ï¿½', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
 	private JPanel panelJuego;
 	private JPanel panelInicio;
 	private JPanel panelLetras;
+	private JPanel panel_pistas;
 	
 	/**
 	 * Launch the application.
@@ -125,11 +129,16 @@ public class AhorcadoWindow {
 		panel_palabra.setBounds(1, 142, 167, 142);
 		panel_palabra.setLayout(new GridLayout(3, 0, 0, 0));
 		
-		JPanel panel_pistas = new JPanel();
+		panel_pistas = new JPanel();
 		panel_palabra.add(panel_pistas);
 		panel_pistas.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		JButton btnPista1 = new JButton("");
+		btnPista1.setOpaque(false);
+		btnPista1.setContentAreaFilled(false);
+		btnPista1.setBorderPainted(false);
+
+		
 		btnPista1.setBackground(Color.RED);
 		btnPista1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -140,6 +149,10 @@ public class AhorcadoWindow {
 		panel_pistas.add(btnPista1);
 		
 		JButton btnPista2 = new JButton("");
+		btnPista2.setOpaque(false);
+		btnPista2.setContentAreaFilled(false);
+		btnPista2.setBorderPainted(false);
+		
 		btnPista2.setBackground(Color.RED);
 		btnPista2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -150,6 +163,10 @@ public class AhorcadoWindow {
 		panel_pistas.add(btnPista2);
 		
 		JButton btnPista3 = new JButton("");
+		btnPista3.setOpaque(false);
+		btnPista3.setContentAreaFilled(false);
+		btnPista3.setBorderPainted(false);
+		
 		btnPista3.setBackground(Color.RED);
 		btnPista3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -160,6 +177,10 @@ public class AhorcadoWindow {
 		panel_pistas.add(btnPista3);
 		
 		JButton btnPista4 = new JButton("");
+		btnPista4.setOpaque(false);
+		btnPista4.setContentAreaFilled(false);
+		btnPista4.setBorderPainted(false);
+		
 		btnPista4.setBackground(Color.RED);
 		btnPista4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -170,6 +191,10 @@ public class AhorcadoWindow {
 		panel_pistas.add(btnPista4);
 		
 		JButton btnPista5 = new JButton("");
+		btnPista5.setOpaque(false);
+		btnPista5.setContentAreaFilled(false);
+		btnPista5.setBorderPainted(false);
+		
 		btnPista5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				btnPista5.setVisible(false);
@@ -255,6 +280,7 @@ public class AhorcadoWindow {
 				}
 				
 				panelInicio.setVisible(false);
+				imagenesPistas();
 				panelJuego.setVisible(true);
 				
 				lblPalabraOculta.setText(partida.getPalabraOculta());
@@ -313,6 +339,20 @@ public class AhorcadoWindow {
 			clickBotonTeclado(btnTecla, l);
 			p.add(btnTecla);
 		}
+	}
+	
+	private void imagenesPistas() {
+		Component[] components = panel_pistas.getComponents();
+		
+		ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("images/bulb.png"));
+		Image image = imageIcon.getImage();
+		Image newimg;
+		
+		for (int i = 0; i < components.length; i++) {
+			newimg = image.getScaledInstance(components[i].getSize().height, components[i].getSize().width,  java.awt.Image.SCALE_SMOOTH);
+			((JButton) components[i]).setIcon(new ImageIcon(newimg));
+		}
+
 	}
 }
 
