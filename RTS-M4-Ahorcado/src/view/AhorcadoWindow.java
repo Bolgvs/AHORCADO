@@ -2,7 +2,6 @@ package view;
 
 import java.awt.EventQueue;
 
-import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,17 +20,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
 import java.awt.Font;
+import javax.swing.SwingConstants;
 
 
 public class AhorcadoWindow {
 	private JFrame frame;
 	private Partida partida;
-	private char[] alfabeto = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'ï¿½', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+	private char[] alfabeto = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', '½', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
 	private JPanel panelJuego;
 	private JPanel panelInicio;
 	private JPanel panelLetras;
 	private JPanel panel_pistas;
 	private JPanel panelImagen;
+	private JLabel lblPalabraOculta;
 	
 	int imagenahora = 0;
 	
@@ -67,14 +68,14 @@ public class AhorcadoWindow {
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setBackground(new Color(240, 240, 240));
-		frame.setBounds(100, 100, 571, 420);
+		frame.setBounds(100, 100, 560, 420);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		panelJuego = new JPanel();
-		panelJuego.setBounds(10, 0, 549, 371);
+		panelJuego.setBounds(0, 0, 560, 380);
 		frame.getContentPane().add(panelJuego);
-		panelJuego.setLayout(new GridLayout(1, 0, 25, 0));
+		panelJuego.setLayout(new GridLayout(1, 0, 30, 0));
 		
 		JLabel lblMenu = new JLabel("Menu");
 		lblMenu.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -94,7 +95,7 @@ public class AhorcadoWindow {
 		lblPalabraSecreta.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblPalabraSecreta.setBounds(10, 188, 129, 14);
 		
-		JLabel lblPalabraOculta = new JLabel("");
+		lblPalabraOculta = new JLabel("");
 		lblPalabraOculta.setFont(new Font("Ubuntu", Font.BOLD, 23));
 		lblPalabraOculta.setForeground(Color.WHITE);
 		panelLetras_1.add(lblPalabraOculta);
@@ -103,10 +104,8 @@ public class AhorcadoWindow {
 		panelLetras.setBounds(10, 308, 238, 181);
 		panelLetras.setLayout(new GridLayout(0, 5, 1, 0));
 		
-		////////////////////////////////////
-		crearTeclado(panelLetras, lblPalabraOculta);
 		
-		////////////////////////
+		crearTeclado(panelLetras);
 		
 		JButton btnResolver = new JButton("Resolver");
 		btnResolver.addActionListener(new ActionListener() {
@@ -135,79 +134,13 @@ public class AhorcadoWindow {
 		panel_palabra.setLayout(new GridLayout(3, 0, 0, 0));
 		
 		panel_pistas = new JPanel();
-		panel_palabra.add(panel_pistas);
+		panel_palabra.add(panel_pistas);									//PISTAS
 		panel_pistas.setLayout(new GridLayout(1, 0, 0, 0));
 		
-		JButton btnPista1 = new JButton("");
-		btnPista1.setOpaque(false);
-		btnPista1.setContentAreaFilled(false);
-		btnPista1.setBorderPainted(false);
-
 		
-		btnPista1.setBackground(Color.RED);
-		btnPista1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				btnPista1.setVisible(false);
-			}
-		});
+			crearPanelPistas();
 		
-		panel_pistas.add(btnPista1);
 		
-		JButton btnPista2 = new JButton("");
-		btnPista2.setOpaque(false);
-		btnPista2.setContentAreaFilled(false);
-		btnPista2.setBorderPainted(false);
-		
-		btnPista2.setBackground(Color.RED);
-		btnPista2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				btnPista2.setVisible(false);
-			}
-		});
-		
-		panel_pistas.add(btnPista2);
-		
-		JButton btnPista3 = new JButton("");
-		btnPista3.setOpaque(false);
-		btnPista3.setContentAreaFilled(false);
-		btnPista3.setBorderPainted(false);
-		
-		btnPista3.setBackground(Color.RED);
-		btnPista3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				btnPista3.setVisible(false);
-			}
-		});
-		
-		panel_pistas.add(btnPista3);
-		
-		JButton btnPista4 = new JButton("");
-		btnPista4.setOpaque(false);
-		btnPista4.setContentAreaFilled(false);
-		btnPista4.setBorderPainted(false);
-		
-		btnPista4.setBackground(Color.RED);
-		btnPista4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				btnPista4.setVisible(false);
-			}
-		});
-		
-		panel_pistas.add(btnPista4);
-		
-		JButton btnPista5 = new JButton("");
-		btnPista5.setOpaque(false);
-		btnPista5.setContentAreaFilled(false);
-		btnPista5.setBorderPainted(false);
-		
-		btnPista5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				btnPista5.setVisible(false);
-			}
-		});
-		
-		btnPista5.setBackground(Color.RED);
-		panel_pistas.add(btnPista5);
 		panel_palabra.add(lblPalabraSecreta);
 		panel_palabra.add(panelLetras_1);
 		
@@ -235,17 +168,19 @@ public class AhorcadoWindow {
 		
 
 		panelInicio = new JPanel();
-		panelInicio.setBounds(12, 0, 547, 383);
+		panelInicio.setBounds(0, 0, 560, 380);
 		frame.getContentPane().add(panelInicio);
 		panelInicio.setLayout(null);
 		
 		JLabel lblHangmanV = new JLabel("Hangman v1.0\n");
+		lblHangmanV.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHangmanV.setFont(new Font("URW Gothic", Font.BOLD, 33));
-		lblHangmanV.setBounds(152, 100, 265, 37);
+		lblHangmanV.setBounds(148, 100, 265, 37);
 		panelInicio.add(lblHangmanV);
 		
 		JLabel lblByNicoPau = new JLabel("by  Nico, Pau & Joel");
-		lblByNicoPau.setBounds(202, 139, 226, 15);
+		lblByNicoPau.setHorizontalAlignment(SwingConstants.CENTER);
+		lblByNicoPau.setBounds(167, 139, 226, 15);
 		
 		panelInicio.add(lblByNicoPau);		
 		JButton btnAbout = new JButton("About");
@@ -258,7 +193,7 @@ public class AhorcadoWindow {
 			}
 		});
 		
-		btnAbout.setBounds(218, 256, 117, 25);
+		btnAbout.setBounds(222, 256, 117, 25);
 		panelInicio.add(btnAbout);
 		
 		JButton btnPlay = new JButton("Play");
@@ -273,48 +208,25 @@ public class AhorcadoWindow {
 				{
 					opcion_dificultad = 0;
 				}
-				
-				ImageIcon imageIcon;
-				Image image;
-				Image newimg;
 
 				
 				switch (opcion_dificultad) {
 					case 0:
 						partida = new Partida();
 						dificultad = Partida.tipos_dificultad.principiante;
-						imageIcon = new ImageIcon(getClass().getClassLoader().getResource("images/Hangman sprite 10/hangman10i.jpg"));
-						image = imageIcon.getImage();
-
-						newimg = image.getScaledInstance(panelImagen.getSize().height, panelImagen.getSize().width,  java.awt.Image.SCALE_SMOOTH);
-			
-						panelImagen.add(new JLabel(new ImageIcon(newimg)));
-						
+						cargarImagen("images/Hangman sprite 10/hangman10i.jpg");
 						break;
 					
 					case 1:
 						partida = new Partida(Partida.tipos_dificultad.intermedio);
 						dificultad = Partida.tipos_dificultad.intermedio;
-						imageIcon = new ImageIcon(getClass().getClassLoader().getResource("images/Hangman sprite 10/hangman08i.jpg"));
-						image = imageIcon.getImage();
-
-						newimg = image.getScaledInstance(panelImagen.getSize().height, panelImagen.getSize().width,  java.awt.Image.SCALE_SMOOTH);
-			
-						panelImagen.add(new JLabel(new ImageIcon(newimg)));
-						
+						cargarImagen("images/Hangman sprite 10/hangman08i.jpg");
 						break;
 						
 					case 2:
 						partida = new Partida(Partida.tipos_dificultad.avanzado);
 						dificultad = Partida.tipos_dificultad.avanzado;
-						imageIcon = new ImageIcon(getClass().getClassLoader().getResource("images/Hangman sprite 10/hangman06i.jpg"));
-						image = imageIcon.getImage();
-
-						
-						newimg = image.getScaledInstance(panelImagen.getSize().height, panelImagen.getSize().width,  java.awt.Image.SCALE_SMOOTH);
-			
-						panelImagen.add(new JLabel(new ImageIcon(newimg)));
-						
+						cargarImagen("images/Hangman sprite 10/hangman06i.jpg");
 						break;
 				}
 				
@@ -329,7 +241,7 @@ public class AhorcadoWindow {
 			}
 		});
 		
-		btnPlay.setBounds(218, 205, 117, 25);
+		btnPlay.setBounds(222, 205, 117, 25);
 		panelInicio.add(btnPlay);
 	}
 	
@@ -366,12 +278,12 @@ public class AhorcadoWindow {
 		});
 	}
 	
-	private void crearTeclado(JPanel p, JLabel l) {
+	private void crearTeclado(JPanel p) {
 		
 		for(int i = 0; i<alfabeto.length; i++) {
 			JButton btnTecla = new JButton(alfabeto[i]+"");
 			btnTecla.setBounds(10, 308, 46, 23);
-			clickBotonTeclado(btnTecla, l);
+			clickBotonTeclado(btnTecla, lblPalabraOculta);
 			p.add(btnTecla);
 		}
 	}
@@ -390,61 +302,51 @@ public class AhorcadoWindow {
 
 	}
 	
-	private void actualizarHangman(int intentos) {
-		String imagename;
+	private void crearPanelPistas() {
+		for(int i = 0; i<5; i++) {
+			JButton btnPista = new JButton("");
+			btnPista.setOpaque(false);
+			btnPista.setContentAreaFilled(false);
+			btnPista.setBorderPainted(false);
+
+
+			btnPista.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					if(partida.hasPista()) {
+						btnPista.setVisible(false);
+						partida.usarPista();
+						lblPalabraOculta.setText(partida.getPalabraOculta());
+					}
+				}
+			});
+
+			panel_pistas.add(btnPista);
+		}
+	}
+	
+	private void cargarImagen(String imageName) {
 		ImageIcon imageIcon;
 		Image image;
 		Image newimg;
 		
-		switch (dificultad) {
-			case principiante:
-				imagename = "images/Hangman sprite 10/hangman0" + (intentos) + "i.jpg"; 
-				imageIcon = new ImageIcon(getClass().getClassLoader().getResource(imagename));
-				image = imageIcon.getImage();
+		imageIcon = new ImageIcon(getClass().getClassLoader().getResource(imageName));
+		image = imageIcon.getImage();
 
-				newimg = image.getScaledInstance(panelImagen.getSize().height, panelImagen.getSize().width,  java.awt.Image.SCALE_SMOOTH);
+		newimg = image.getScaledInstance(panelImagen.getSize().height, panelImagen.getSize().width,  java.awt.Image.SCALE_SMOOTH);
+
+		panelImagen.removeAll();
+		panelImagen.revalidate();
+
+		panelImagen.add(new JLabel(new ImageIcon(newimg)));
+		
+		panelImagen.repaint();
+	}
 	
-				panelImagen.removeAll();
-				panelImagen.revalidate();
-
-				panelImagen.add(new JLabel(new ImageIcon(newimg)));
-				
-				panelImagen.repaint();
-				
-				break;
-				
-			case intermedio:
-				imagename = "images/Hangman sprite 10/hangman0" + (intentos) + "i.jpg"; 
-				imageIcon = new ImageIcon(getClass().getClassLoader().getResource(imagename));
-				image = imageIcon.getImage();
-				
-				newimg = image.getScaledInstance(panelImagen.getSize().height, panelImagen.getSize().width,  java.awt.Image.SCALE_SMOOTH);
-	
-				panelImagen.removeAll();
-				panelImagen.revalidate();
-
-				panelImagen.add(new JLabel(new ImageIcon(newimg)));
-				
-				panelImagen.repaint();
+	private void actualizarHangman(int intentos) {
+		String imageName = "images/Hangman sprite 10/hangman0" + (intentos) + "i.jpg";
+		
+				cargarImagen(imageName);
 			
-				break;
-				
-			case avanzado:
-				imagename = "images/Hangman sprite 10/hangman0" + (intentos) + "i.jpg"; 
-				imageIcon = new ImageIcon(getClass().getClassLoader().getResource(imagename));
-				image = imageIcon.getImage();
-				
-				newimg = image.getScaledInstance(panelImagen.getSize().height, panelImagen.getSize().width,  java.awt.Image.SCALE_SMOOTH);
-	
-				panelImagen.removeAll();
-				panelImagen.revalidate();
-
-				panelImagen.add(new JLabel(new ImageIcon(newimg)));
-				
-				panelImagen.repaint();
-				
-				break;
-		}
 	}
 }
 

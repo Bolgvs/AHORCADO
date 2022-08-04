@@ -1,14 +1,11 @@
 package logic;
 
-import java.awt.Button;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -21,9 +18,6 @@ public class Partida {
 
 	// Number of tries per life
 	private int intentos;
-	
-	// Number of hints
-	private final int PISTAS = 5;
 
 	// Array with Strings that contains the words to guess
 	private String[] arrayPalabras = { "UNO", "DOS", "TRES", "CUATRO", "CINCO", "SEIS", "SIETE", "OCHO", "NUEVE",
@@ -40,6 +34,10 @@ public class Partida {
 	
 	// List of current, already used letters
 	private ArrayList<Character> letras = new ArrayList<Character>();
+
+	private boolean pista = true;
+	
+	
 
 	/*
 	 * 	This function grabs a random String off the provided String array with developer-defined
@@ -170,9 +168,26 @@ public class Partida {
 		escogerPalabra();
 		
 		// Dummy
-		actualizarPalabraOculta('ï¿½');
+		actualizarPalabraOculta('½');
 	}
 	
+	public void usarPista() {
+		if(intentos!=0) {
+			boolean loop = true;
+			int i = 0;
+			do {
+				if(!letras.contains(palabra.charAt(i))) {
+					letras.add(palabra.charAt(i));
+					actualizarPalabraOculta(palabra.charAt(i));
+					loop = false;
+				}
+				i++;
+			}while(i<palabra.length() && loop);
+			intentos--;
+			pista = false;
+		}
+	}
+
 	/*
 	 * 	Partida's default
 	 */
@@ -183,7 +198,7 @@ public class Partida {
 		escogerPalabra();
 
 		// Dummy
-		actualizarPalabraOculta('ï¿½');
+		actualizarPalabraOculta('½');
 
 	}
 
@@ -203,5 +218,10 @@ public class Partida {
 	public int getIntentos() {
 		return intentos;
 	}
+	
+	public boolean hasPista() {
+		return pista;
+	}
+
 
 }
