@@ -220,6 +220,9 @@ public class Partida {
 	}
 	
 	public boolean hasPista() {
+		if(letras.size() == palabra.length()) {
+			pista = false;
+		}
 		return pista;
 	}
 
