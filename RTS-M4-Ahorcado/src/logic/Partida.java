@@ -1,6 +1,7 @@
 package logic;
 
 import java.awt.Button;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -10,7 +11,7 @@ import javax.swing.JButton;
 public class Partida {
 
 	// Game difficulty types enum
-	enum tipos_dificultad {
+	public enum tipos_dificultad {
 		principiante, intermedio, avanzado
 	};
 
@@ -21,8 +22,8 @@ public class Partida {
 	private final int PISTAS = 5;
 
 	// Array with Strings that contains the words to guess
-	private String[] arrayPalabras = { "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve",
-			"diez" };
+	private String[] arrayPalabras = { "UNO", "DOS", "TRES", "CUATRO", "CINCO", "SEIS", "SIETE", "OCHO", "NUEVE",
+			"DIEZ" };
 	
 	// List of words using Java's List
 	private List<String> palabras = Arrays.asList(arrayPalabras);
@@ -34,10 +35,7 @@ public class Partida {
 	private String palabraOculta = new String();
 	
 	// List of current, already used letters
-	private List<Character> letras;
-
-	// String-to-guess in char array form for easier and more straightforward manipulation
-	private char[] palabraArray = palabra.toCharArray();
+	private ArrayList<Character> letras = new ArrayList<Character>();
 
 	/*
 	 * 	This function grabs a random String off the provided String array with developer-defined
@@ -63,7 +61,18 @@ public class Partida {
 	public boolean contieneLetra(char a) {
 		// Add the letter to the guessed letters array
 		letras.add(a);
+		
+		System.out.println("Letras: " + letras.toString());
 
+		if (palabra.contains(Character.toString(a)) == true)
+		{
+			System.out.println("La tiene");
+		}
+		else
+		{
+			System.out.println("No :(");
+		}
+		
 		// Check if the current random word contains the character the user inputted
 		return palabra.contains(Character.toString(a));
 	}
@@ -77,11 +86,13 @@ public class Partida {
 	public void actualizarPalabraOculta(char a) {
 		// Generate the word that will show on screen
 		palabraOculta = "";
-		for (int i = 0; i < palabraArray.length; i++) {
-			if (letras.contains(palabraArray[i]))
-				palabraOculta += palabraArray[i] + " ";
-			else
+		
+		for (int i = 0; i < palabra.length(); i++) {
+			if (letras.contains(palabra.charAt(i))) {
+				palabraOculta += palabra.charAt(i) + " ";
+			} else {
 				palabraOculta += "_ ";
+			}
 		}
 	}
 
@@ -95,6 +106,7 @@ public class Partida {
 		char letraBoton = b.getText().charAt(0);
 
 		if (!contieneLetra(letraBoton)) {
+			System.out.println("No contiene letra!");
 			intentos--;
 		}
 
@@ -122,6 +134,14 @@ public class Partida {
 				this.intentos = 6;
 				break;
 		}
+		
+		escogerPalabra();
+		
+
+		System.out.println(this.palabra);
+		
+		// Dummy
+		actualizarPalabraOculta('½');
 	}
 	
 	/*
@@ -130,6 +150,14 @@ public class Partida {
 	public Partida() {
 		// Assume 'beginner dificulty' on default constructor
 		this.intentos = 10;
+		
+		escogerPalabra();
+		
+		System.out.println(this.palabra);
+
+		// Dummy
+		actualizarPalabraOculta('½');
+
 	}
 
 	/*
@@ -138,6 +166,7 @@ public class Partida {
 	 * 	@return String	:	Returns palabraOculta
 	 */
 	public String getPalabraOculta() {
+		System.out.println("Palabra oculta: " + palabraOculta);
 		return palabraOculta;
 	}
 
