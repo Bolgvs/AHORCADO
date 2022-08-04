@@ -2,6 +2,7 @@ package view;
 
 import java.awt.EventQueue;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,8 +13,11 @@ import logic.Partida;
 import java.awt.Color;
 import javax.swing.JEditorPane;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.io.InputStream;
 import java.awt.BorderLayout;
 import java.awt.Font;
 
@@ -151,9 +155,6 @@ public class AhorcadoWindow {
 		JButton btnD = new JButton("D");
 		btnD.setBounds(147, 308, 46, 23);
 		
-		JEditorPane editorPane = new JEditorPane();
-		editorPane.setBounds(10, 142, 224, 35);
-		
 		JPanel panelLetras = new JPanel();
 		panelLetras.setBounds(10, 308, 238, 181);
 		panelLetras.setLayout(new GridLayout(0, 5, 1, 0));
@@ -230,7 +231,30 @@ public class AhorcadoWindow {
 		JPanel panel_palabra = new JPanel();
 		panel_palabra.setBounds(1, 142, 167, 142);
 		panel_palabra.setLayout(new GridLayout(3, 0, 0, 0));
-		panel_palabra.add( editorPane);
+		
+		JPanel panel_pistas = new JPanel();
+		panel_palabra.add(panel_pistas);
+		panel_pistas.setLayout(new GridLayout(1, 0, 0, 0));
+		
+		JButton btnPista1 = new JButton("");
+		btnPista1.setBackground(Color.RED);
+		panel_pistas.add(btnPista1);
+		
+		JButton btnPista2 = new JButton("");
+		btnPista2.setBackground(Color.RED);
+		panel_pistas.add(btnPista2);
+		
+		JButton btnPista3 = new JButton("");
+		btnPista3.setBackground(Color.RED);
+		panel_pistas.add(btnPista3);
+		
+		JButton btnPista4 = new JButton("");
+		btnPista4.setBackground(Color.RED);
+		panel_pistas.add(btnPista4);
+		
+		JButton btnPista5 = new JButton("");
+		btnPista5.setBackground(Color.RED);
+		panel_pistas.add(btnPista5);
 		panel_palabra.add(lblPalabraSecreta);
 		panel_palabra.add(panelLetras_1);
 		
@@ -254,6 +278,22 @@ public class AhorcadoWindow {
 		panel.add(panel_menu, BorderLayout.NORTH);
 		panel.add(panel_palabra, BorderLayout.CENTER);
 		panel.add(panel_teclado, BorderLayout.SOUTH);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(294, 11, 208, 360);
+		frame.getContentPane().add(panel_1);
+		panel_1.setLayout(new GridLayout(1, 0, 0, 0));
+		
+		/*
+		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+		InputStream input = classLoader.getResourceAsStream("/images/hangman_sprite/hangman00i.jpg");
+		try {
+			Image logo = ImageIO.read(input);
+			panel_1.add(logo);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		*/
 	}
 	
 	
