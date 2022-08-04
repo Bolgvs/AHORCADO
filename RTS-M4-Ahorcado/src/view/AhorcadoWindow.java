@@ -6,16 +6,21 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import logic.Partida;
+
 import java.awt.Color;
 import javax.swing.JEditorPane;
 import java.awt.GridLayout;
-import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
+import java.awt.Font;
 
 
 public class AhorcadoWindow {
 	private JFrame frame;
-
+	private Partida partida;
 	/**
 	 * Launch the application.
 	 */
@@ -50,9 +55,11 @@ public class AhorcadoWindow {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblMenu = new JLabel("Menu");
+		lblMenu.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblMenu.setBounds(10, 11, 46, 14);
 		
 		JLabel lblTeclado = new JLabel("Teclado");
+		lblTeclado.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblTeclado.setBounds(10, 283, 46, 14);
 		
 		JPanel panelLetras_1 = new JPanel();
@@ -60,6 +67,7 @@ public class AhorcadoWindow {
 		panelLetras_1.setBounds(10, 213, 224, 48);
 		
 		JLabel lblPalabraSecreta = new JLabel("Palabra secreta");
+		lblPalabraSecreta.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblPalabraSecreta.setBounds(10, 188, 129, 14);
 		
 		JButton btnA = new JButton("A");
@@ -226,6 +234,11 @@ public class AhorcadoWindow {
 		panel_palabra.add(lblPalabraSecreta);
 		panel_palabra.add(panelLetras_1);
 		
+		JLabel lblPalabraOculta = new JLabel("_ _ _ _ _ _ _ _ _ _");
+		lblPalabraOculta.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblPalabraOculta.setForeground(Color.WHITE);
+		panelLetras_1.add(lblPalabraOculta);
+		
 		JPanel panel_teclado = new JPanel();
 		panel_teclado.setBounds(185, 106, 167, 166);
 		panel_teclado.setLayout(new BorderLayout(0, 0));
@@ -242,4 +255,14 @@ public class AhorcadoWindow {
 		panel.add(panel_palabra, BorderLayout.CENTER);
 		panel.add(panel_teclado, BorderLayout.SOUTH);
 	}
+	
+	
+	private void clickBotonTeclado(JButton btn, JLabel lbl) {
+		btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lbl.setText("");
+			}
+		});
+	}
 }
+
