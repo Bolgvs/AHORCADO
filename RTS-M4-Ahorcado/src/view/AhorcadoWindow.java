@@ -2,7 +2,6 @@ package view;
 
 import java.awt.EventQueue;
 
-import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,13 +13,9 @@ import logic.Partida;
 import java.awt.Color;
 import java.awt.Component;
 
-import javax.swing.JEditorPane;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.io.InputStream;
 import java.awt.BorderLayout;
 import java.awt.Font;
 
@@ -28,10 +23,10 @@ import java.awt.Font;
 public class AhorcadoWindow {
 	private JFrame frame;
 	private Partida partida;
-	
-	JPanel panelJuego;
-	JPanel panelInicio;
-	JPanel panelLetras;
+	private char[] alfabeto = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+	private JPanel panelJuego;
+	private JPanel panelInicio;
+	private JPanel panelLetras;
 	
 	/**
 	 * Launch the application.
@@ -95,171 +90,14 @@ public class AhorcadoWindow {
 		lblPalabraOculta.setForeground(Color.WHITE);
 		panelLetras_1.add(lblPalabraOculta);
 		
-		JButton btnA = new JButton("A");
-		btnA.setBounds(10, 308, 46, 23);
-		clickBotonTeclado(btnA, lblPalabraOculta);
-		
-		JButton btnC = new JButton("C");
-		btnC.setBounds(104, 308, 46, 23);
-		clickBotonTeclado(btnC, lblPalabraOculta);
-		
-		JButton btnB = new JButton("B");
-		btnB.setBounds(58, 308, 46, 23);
-		clickBotonTeclado(btnB, lblPalabraOculta);
-		
-		JButton btnK = new JButton("K");
-		btnK.setBounds(10, 354, 46, 23);
-		clickBotonTeclado(btnK, lblPalabraOculta);
-		
-		JButton btnG = new JButton("G");
-		btnG.setBounds(58, 331, 46, 23);
-		clickBotonTeclado(btnG, lblPalabraOculta);
-		
-		JButton btnJ = new JButton("J");
-		btnJ.setBounds(193, 331, 46, 23);
-		clickBotonTeclado(btnJ, lblPalabraOculta);
-		
-		JButton btnR = new JButton("R");
-		btnR.setBounds(147, 376, 46, 23);
-		clickBotonTeclado(btnR, lblPalabraOculta);
-		
-		JButton btnN = new JButton("N");
-		btnN.setBounds(147, 354, 46, 23);
-		clickBotonTeclado(btnN, lblPalabraOculta);
-		
-		JButton btnE = new JButton("E");
-		btnE.setBounds(193, 308, 46, 23);
-		clickBotonTeclado(btnE, lblPalabraOculta);
-		
-		JButton btnH = new JButton("H");
-		btnH.setBounds(104, 331, 46, 23);
-		clickBotonTeclado(btnH, lblPalabraOculta);
-		
-		JButton btnP = new JButton("P");
-		btnP.setBounds(58, 376, 46, 23);
-		clickBotonTeclado(btnP, lblPalabraOculta);
-		
-		JButton btnM = new JButton("M");
-		btnM.setBounds(104, 354, 46, 23);
-		clickBotonTeclado(btnM, lblPalabraOculta);
-		
-		JButton btnW = new JButton("W");
-		btnW.setBounds(147, 400, 46, 23);
-		clickBotonTeclado(btnW, lblPalabraOculta);
-		
-		JButton btnS = new JButton("S");
-		btnS.setBounds(193, 376, 46, 23);
-		clickBotonTeclado(btnS, lblPalabraOculta);
-		
-		JButton btnF = new JButton("F");
-		btnF.setBounds(10, 331, 46, 23);
-		clickBotonTeclado(btnF, lblPalabraOculta);
-		
-		JButton btnL = new JButton("L");
-		btnL.setBounds(58, 354, 46, 23);
-		clickBotonTeclado(btnL, lblPalabraOculta);
-		
-		JButton btnT = new JButton("T");
-		btnT.setBounds(10, 400, 46, 23);
-		clickBotonTeclado(btnT, lblPalabraOculta);
-		
-		JButton btnY = new JButton("Y");
-		btnY.setBounds(10, 423, 46, 23);
-		clickBotonTeclado(btnY, lblPalabraOculta);
-		
-		JButton btnQ = new JButton("Q");
-		btnQ.setBounds(104, 376, 46, 23);
-		clickBotonTeclado(btnQ, lblPalabraOculta);
-		
-		JButton btnO = new JButton("O");
-		btnO.setBounds(10, 376, 46, 23);
-		clickBotonTeclado(btnO, lblPalabraOculta);
-		
-		JButton btnZ = new JButton("Z");
-		btnZ.setBounds(58, 423, 46, 23);
-		clickBotonTeclado(btnZ, lblPalabraOculta);
-		
-		JButton btnU = new JButton("U");
-		btnU.setBounds(58, 400, 46, 23);
-		clickBotonTeclado(btnU, lblPalabraOculta);
-		
-		JButton btnV = new JButton("V");
-		btnV.setBounds(104, 400, 46, 23);
-		clickBotonTeclado(btnV, lblPalabraOculta);
-		
-		JButton btnI = new JButton("I");
-		btnI.setBounds(147, 331, 46, 23);
-		clickBotonTeclado(btnI, lblPalabraOculta);
-		
-		JButton btnX = new JButton("X");
-		btnX.setBounds(193, 400, 46, 23);
-		clickBotonTeclado(btnX, lblPalabraOculta);
-		
-		JButton btnNN = new JButton("Ã‘");
-		btnNN.setBounds(193, 354, 46, 23);
-		clickBotonTeclado(btnNN, lblPalabraOculta);
-		
-		JButton btnD = new JButton("D");
-		btnD.setBounds(147, 308, 46, 23);
-		clickBotonTeclado(btnD, lblPalabraOculta);
-		
 		panelLetras = new JPanel();
 		panelLetras.setBounds(10, 308, 238, 181);
 		panelLetras.setLayout(new GridLayout(0, 5, 1, 0));
 		
-		panelLetras.add(btnA);
+		////////////////////////////////////
+		crearTeclado(panelLetras, lblPalabraOculta);
 		
-		panelLetras.add(btnB);
-		
-		panelLetras.add(btnC);
-		
-		panelLetras.add(btnD);
-		
-		panelLetras.add(btnE);
-		
-		panelLetras.add(btnF);
-		
-		panelLetras.add(btnG);
-		
-		panelLetras.add(btnH);
-		
-		panelLetras.add(btnI);
-		
-		panelLetras.add(btnJ);
-		
-		panelLetras.add(btnK);
-		
-		panelLetras.add(btnL);
-		
-		panelLetras.add(btnM);
-		
-		panelLetras.add(btnN);
-		
-		panelLetras.add(btnNN);
-		
-		panelLetras.add(btnO);
-		
-		panelLetras.add(btnP);
-		
-		panelLetras.add(btnQ);
-		
-		panelLetras.add(btnR);
-		
-		panelLetras.add(btnS);
-		
-		panelLetras.add(btnT);
-		
-		panelLetras.add(btnU);
-		
-		panelLetras.add(btnV);
-		
-		panelLetras.add(btnW);
-		
-		panelLetras.add(btnX);
-		
-		panelLetras.add(btnY);
-		
-		panelLetras.add(btnZ);
+		////////////////////////
 		
 		JButton btnResolver = new JButton("Resolver");
 		btnResolver.addActionListener(new ActionListener() {
@@ -465,6 +303,16 @@ public class AhorcadoWindow {
 				
 			}
 		});
+	}
+	
+	private void crearTeclado(JPanel p, JLabel l) {
+		
+		for(int i = 0; i<alfabeto.length; i++) {
+			JButton btnTecla = new JButton(alfabeto[i]+"");
+			btnTecla.setBounds(10, 308, 46, 23);
+			clickBotonTeclado(btnTecla, l);
+			p.add(btnTecla);
+		}
 	}
 }
 
