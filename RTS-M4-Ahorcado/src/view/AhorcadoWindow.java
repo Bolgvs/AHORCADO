@@ -264,6 +264,15 @@ public class AhorcadoWindow {
 		JButton btnResolver = new JButton("Resolver");
 		btnResolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (partida.getPalabraOculta().replaceAll("\\s+","").equals(partida.getPalabra()) == true)
+				{
+					partida.finalizarPartida(panelJuego, panelInicio, true);
+					visibilidadBotones(true);
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "Palabra incorrecta! Sigue intentando...");
+				}
 				
 			}
 		});
@@ -445,7 +454,7 @@ public class AhorcadoWindow {
 			public void actionPerformed(ActionEvent e) {
 				if (partida.getIntentos() <= 1)
 				{
-					partida.finalizarPartida(panelJuego, panelInicio);
+					partida.finalizarPartida(panelJuego, panelInicio, false);
 					visibilidadBotones(true);
 				}
 				else
