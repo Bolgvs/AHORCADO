@@ -331,17 +331,6 @@ public class AhorcadoWindow {
 		
 		btnPlay.setBounds(218, 205, 117, 25);
 		panelInicio.add(btnPlay);
-		
-		/*
-		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		InputStream input = classLoader.getResourceAsStream("/images/hangman_sprite/hangman00i.jpg");
-		try {
-			Image logo = ImageIO.read(input);
-			panelImagen.add(logo);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		*/
 	}
 	
 	private void visibilidadBotones(boolean estanActivos) {
@@ -411,7 +400,6 @@ public class AhorcadoWindow {
 			case principiante:
 				imagename = "images/Hangman sprite 10/hangman0" + (intentos) + "i.jpg"; 
 				imageIcon = new ImageIcon(getClass().getClassLoader().getResource(imagename));
-				System.out.println(imagename);
 				image = imageIcon.getImage();
 
 				newimg = image.getScaledInstance(panelImagen.getSize().height, panelImagen.getSize().width,  java.awt.Image.SCALE_SMOOTH);
@@ -428,7 +416,6 @@ public class AhorcadoWindow {
 			case intermedio:
 				imagename = "images/Hangman sprite 10/hangman0" + (intentos) + "i.jpg"; 
 				imageIcon = new ImageIcon(getClass().getClassLoader().getResource(imagename));
-				System.out.println(imagename);
 				image = imageIcon.getImage();
 				
 				newimg = image.getScaledInstance(panelImagen.getSize().height, panelImagen.getSize().width,  java.awt.Image.SCALE_SMOOTH);
@@ -445,7 +432,6 @@ public class AhorcadoWindow {
 			case avanzado:
 				imagename = "images/Hangman sprite 10/hangman0" + (intentos) + "i.jpg"; 
 				imageIcon = new ImageIcon(getClass().getClassLoader().getResource(imagename));
-				System.out.println(imagename);
 				image = imageIcon.getImage();
 				
 				newimg = image.getScaledInstance(panelImagen.getSize().height, panelImagen.getSize().width,  java.awt.Image.SCALE_SMOOTH);
