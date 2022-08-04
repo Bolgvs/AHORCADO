@@ -104,11 +104,22 @@ public class Partida {
 		actualizarPalabraOculta(letraBoton);
 	}
 	
-	public void finalizarPartida(JPanel panelJuego, JPanel panelInicio) {
+	public void finalizarPartida(JPanel panelJuego, JPanel panelInicio, boolean seHaGanado) {
 		String[] buttons = { "Reintentar", "Salir" };
 		
-		int quehacer = JOptionPane.showOptionDialog(null, "Has perdido...", "¿Que hacer?",
-		        JOptionPane.INFORMATION_MESSAGE, 1, null, buttons, buttons[1]);
+		int quehacer = 0;
+		
+		if (seHaGanado)
+		{
+			quehacer = JOptionPane.showOptionDialog(null, "Has ganado!", "¿Que quieres hacer?",
+			        JOptionPane.INFORMATION_MESSAGE, 1, null, buttons, buttons[1]);
+		}
+		else
+		{
+			quehacer = JOptionPane.showOptionDialog(null, "Has perdido...", "¿Que quieres hacer?",
+			        JOptionPane.INFORMATION_MESSAGE, 1, null, buttons, buttons[1]);
+		}
+		 
 		
 		if (quehacer == -1) quehacer = 1;
 		
@@ -177,6 +188,10 @@ public class Partida {
 	 */
 	public String getPalabraOculta() {
 		return palabraOculta;
+	}
+	
+	public String getPalabra() {
+		return palabra;
 	}
 	
 	public int getIntentos() {
