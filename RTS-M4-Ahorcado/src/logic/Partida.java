@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Random;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 public class Partida {
 
@@ -62,17 +64,6 @@ public class Partida {
 		// Add the letter to the guessed letters array
 		letras.add(a);
 		
-		System.out.println("Letras: " + letras.toString());
-
-		if (palabra.contains(Character.toString(a)) == true)
-		{
-			System.out.println("La tiene");
-		}
-		else
-		{
-			System.out.println("No :(");
-		}
-		
 		// Check if the current random word contains the character the user inputted
 		return palabra.contains(Character.toString(a));
 	}
@@ -106,12 +97,31 @@ public class Partida {
 		char letraBoton = b.getText().charAt(0);
 
 		if (!contieneLetra(letraBoton)) {
-			System.out.println("No contiene letra!");
 			intentos--;
 		}
 
 		b.setEnabled(false);
 		actualizarPalabraOculta(letraBoton);
+	}
+	
+	public void finalizarPartida(JPanel panelJuego, JPanel panelInicio) {
+		String[] buttons = { "Reintentar", "Salir" };
+		
+		int quehacer = JOptionPane.showOptionDialog(null, "Has perdido...", "¿Que hacer?",
+		        JOptionPane.INFORMATION_MESSAGE, 1, null, buttons, buttons[1]);
+		
+		if (quehacer == -1) quehacer = 1;
+		
+		if (quehacer == 0)
+		{
+			panelJuego.setVisible(false);
+			panelInicio.setVisible(true);
+		}
+		else
+		{
+			System.exit(0);
+		}
+		
 	}
 
 	/*
@@ -166,8 +176,11 @@ public class Partida {
 	 * 	@return String	:	Returns palabraOculta
 	 */
 	public String getPalabraOculta() {
-		System.out.println("Palabra oculta: " + palabraOculta);
 		return palabraOculta;
+	}
+	
+	public int getIntentos() {
+		return intentos;
 	}
 
 }

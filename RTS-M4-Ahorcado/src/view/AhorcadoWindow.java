@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import logic.Partida;
 
 import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.JEditorPane;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -26,6 +28,11 @@ import java.awt.Font;
 public class AhorcadoWindow {
 	private JFrame frame;
 	private Partida partida;
+	
+	JPanel panelJuego;
+	JPanel panelInicio;
+	JPanel panelLetras;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -60,7 +67,7 @@ public class AhorcadoWindow {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JPanel panelJuego = new JPanel();
+		panelJuego = new JPanel();
 		panelJuego.setBounds(10, 0, 549, 371);
 		frame.getContentPane().add(panelJuego);
 		panelJuego.setLayout(new GridLayout(1, 0, 25, 0));
@@ -84,7 +91,7 @@ public class AhorcadoWindow {
 		lblPalabraSecreta.setBounds(10, 188, 129, 14);
 		
 		JLabel lblPalabraOculta = new JLabel("");
-		lblPalabraOculta.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblPalabraOculta.setFont(new Font("Ubuntu", Font.BOLD, 23));
 		lblPalabraOculta.setForeground(Color.WHITE);
 		panelLetras_1.add(lblPalabraOculta);
 		
@@ -196,7 +203,7 @@ public class AhorcadoWindow {
 		btnD.setBounds(147, 308, 46, 23);
 		clickBotonTeclado(btnD, lblPalabraOculta);
 		
-		JPanel panelLetras = new JPanel();
+		panelLetras = new JPanel();
 		panelLetras.setBounds(10, 308, 238, 181);
 		panelLetras.setLayout(new GridLayout(0, 5, 1, 0));
 		
@@ -257,6 +264,7 @@ public class AhorcadoWindow {
 		JButton btnResolver = new JButton("Resolver");
 		btnResolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		
@@ -276,21 +284,51 @@ public class AhorcadoWindow {
 		
 		JButton btnPista1 = new JButton("");
 		btnPista1.setBackground(Color.RED);
+		btnPista1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				btnPista1.setVisible(false);
+			}
+		});
+		
 		panel_pistas.add(btnPista1);
 		
 		JButton btnPista2 = new JButton("");
 		btnPista2.setBackground(Color.RED);
+		btnPista2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				btnPista2.setVisible(false);
+			}
+		});
+		
 		panel_pistas.add(btnPista2);
 		
 		JButton btnPista3 = new JButton("");
 		btnPista3.setBackground(Color.RED);
+		btnPista3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				btnPista3.setVisible(false);
+			}
+		});
+		
 		panel_pistas.add(btnPista3);
 		
 		JButton btnPista4 = new JButton("");
 		btnPista4.setBackground(Color.RED);
+		btnPista4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				btnPista4.setVisible(false);
+			}
+		});
+		
 		panel_pistas.add(btnPista4);
 		
 		JButton btnPista5 = new JButton("");
+		btnPista5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				btnPista5.setVisible(false);
+			}
+		});
+		
 		btnPista5.setBackground(Color.RED);
 		panel_pistas.add(btnPista5);
 		panel_palabra.add(lblPalabraSecreta);
@@ -319,7 +357,7 @@ public class AhorcadoWindow {
 		panelJuego.setVisible(false);
 		
 
-		JPanel panelInicio = new JPanel();
+		panelInicio = new JPanel();
 		panelInicio.setBounds(12, 0, 547, 383);
 		frame.getContentPane().add(panelInicio);
 		panelInicio.setLayout(null);
@@ -392,12 +430,30 @@ public class AhorcadoWindow {
 		*/
 	}
 	
+	private void visibilidadBotones(boolean estanActivos) {
+		Component[] components = panelLetras.getComponents();
+
+		for (Component component : components) {
+		    if (component instanceof JButton) {
+		        component.setEnabled(estanActivos);
+		    }
+		}
+	}
 	
 	private void clickBotonTeclado(JButton btn, JLabel lbl) {
 		btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				partida.comprobarLetra(btn);
-				lbl.setText(partida.getPalabraOculta());
+				if (partida.getIntentos() <= 1)
+				{
+					partida.finalizarPartida(panelJuego, panelInicio);
+					visibilidadBotones(true);
+				}
+				else
+				{
+					partida.comprobarLetra(btn);
+					lbl.setText(partida.getPalabraOculta());
+				}
+				
 			}
 		});
 	}
