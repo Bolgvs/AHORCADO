@@ -252,9 +252,9 @@ public class AhorcadoWindow {
 		btnAbout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "Este juego trata de adivinar la palabra. Tienes qué escoger una dificultad, "
-                        + "según las vidas qué quieras tener (Princ = 10, Inter = 8, Avan = 6). "
-                        + "Puedes usar pistas, pero te quitarán una vida si son usadas."
-                        + " Pierdes cuándo el dibujo en pantalla llegue a completarse");
+                        + "según las vidas qué quieras tener: \n(Princ = 10, Inter = 8, Avan = 6). "
+                        + "\nPuedes usar pistas, pero te quitarán una vida si son usadas."
+                        + " \nPierdes cuándo el dibujo en pantalla llegue a completarse");
 			}
 		});
 		
