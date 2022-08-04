@@ -45,7 +45,7 @@ public class AhorcadoWindow {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBackground(new Color(240, 240, 240));
-		frame.setBounds(100, 100, 571, 539);
+		frame.setBounds(100, 100, 571, 420);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -234,7 +234,7 @@ public class AhorcadoWindow {
 		
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 11, 250, 478);
+		panel.setBounds(10, 11, 250, 360);
 		frame.getContentPane().add(panel);
 		panel.setLayout(new BorderLayout(0, 10));
 		
