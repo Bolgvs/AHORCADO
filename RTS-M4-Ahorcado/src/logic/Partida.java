@@ -6,7 +6,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -93,18 +95,23 @@ public class Partida {
 	 * 
 	 *	@param	JButton b	:	Button to get the info from
 	 */
-	public void comprobarLetra(JButton b) {
+	public boolean comprobarLetra(JButton b) {
+		boolean esta = true;
+		
 		char letraBoton = b.getText().charAt(0);
 
 		if (!contieneLetra(letraBoton)) {
 			intentos--;
+			esta = false;
 		}
 
 		b.setEnabled(false);
 		actualizarPalabraOculta(letraBoton);
+		
+		return esta;
 	}
 	
-	public void finalizarPartida(JPanel panelJuego, JPanel panelInicio, boolean seHaGanado) {
+	public void finalizarPartida(JPanel panelJuego, JPanel panelInicio, JPanel panelImagen, boolean seHaGanado) {
 		String[] buttons = { "Reintentar", "Salir" };
 		
 		int quehacer = 0;
@@ -126,6 +133,10 @@ public class Partida {
 		if (quehacer == 0)
 		{
 			panelJuego.setVisible(false);
+			panelImagen.removeAll();
+			panelImagen.revalidate();
+
+			panelImagen.repaint();
 			panelInicio.setVisible(true);
 		}
 		else
@@ -162,7 +173,7 @@ public class Partida {
 		System.out.println(this.palabra);
 		
 		// Dummy
-		actualizarPalabraOculta('½');
+		actualizarPalabraOculta('ï¿½');
 	}
 	
 	/*
@@ -177,7 +188,7 @@ public class Partida {
 		System.out.println(this.palabra);
 
 		// Dummy
-		actualizarPalabraOculta('½');
+		actualizarPalabraOculta('ï¿½');
 
 	}
 

@@ -31,6 +31,11 @@ public class AhorcadoWindow {
 	private JPanel panelInicio;
 	private JPanel panelLetras;
 	private JPanel panel_pistas;
+	private JPanel panelImagen;
+	
+	int imagenahora = 0;
+	
+	Partida.tipos_dificultad dificultad;
 	
 	/**
 	 * Launch the application.
@@ -108,7 +113,7 @@ public class AhorcadoWindow {
 			public void actionPerformed(ActionEvent e) {
 				if (partida.getPalabraOculta().replaceAll("\\s+","").equals(partida.getPalabra()) == true)
 				{
-					partida.finalizarPartida(panelJuego, panelInicio, true);
+					partida.finalizarPartida(panelJuego, panelInicio, panelImagen, true);
 					visibilidadBotones(true);
 				}
 				else
@@ -222,7 +227,7 @@ public class AhorcadoWindow {
 		panelMecanicas.add(panel_palabra, BorderLayout.CENTER);
 		panelMecanicas.add(panel_teclado, BorderLayout.SOUTH);
 		
-		JPanel panelImagen = new JPanel();
+		panelImagen = new JPanel();
 		panelJuego.add(panelImagen);
 		panelImagen.setLayout(new GridLayout(1, 0, 0, 0));
 		
@@ -257,30 +262,62 @@ public class AhorcadoWindow {
 			public void actionPerformed(ActionEvent e) {
 				String[] buttons = { "Principiante", "Intermedio", "Avanzado" };
 				
-				int dificultad = JOptionPane.showOptionDialog(null, "Escoje la dificultad", "Preparando partida...",
+				int opcion_dificultad = JOptionPane.showOptionDialog(null, "Escoje la dificultad", "Preparando partida...",
 				        JOptionPane.INFORMATION_MESSAGE, 1, null, buttons, buttons[2]);
 				
-				if (dificultad == -1)
+				if (opcion_dificultad == -1)
 				{
-					dificultad = 0;
+					opcion_dificultad = 0;
 				}
 				
-				switch (dificultad) {
+				ImageIcon imageIcon;
+				Image image;
+				Image newimg;
+
+				
+				switch (opcion_dificultad) {
 					case 0:
 						partida = new Partida();
+						dificultad = Partida.tipos_dificultad.principiante;
+						imageIcon = new ImageIcon(getClass().getClassLoader().getResource("images/Hangman sprite 10/hangman10i.jpg"));
+						image = imageIcon.getImage();
+
+						newimg = image.getScaledInstance(panelImagen.getSize().height, panelImagen.getSize().width,  java.awt.Image.SCALE_SMOOTH);
+			
+						panelImagen.add(new JLabel(new ImageIcon(newimg)));
+						
 						break;
 					
 					case 1:
 						partida = new Partida(Partida.tipos_dificultad.intermedio);
+						dificultad = Partida.tipos_dificultad.intermedio;
+						imageIcon = new ImageIcon(getClass().getClassLoader().getResource("images/Hangman sprite 10/hangman08i.jpg"));
+						image = imageIcon.getImage();
+
+						newimg = image.getScaledInstance(panelImagen.getSize().height, panelImagen.getSize().width,  java.awt.Image.SCALE_SMOOTH);
+			
+						panelImagen.add(new JLabel(new ImageIcon(newimg)));
+						
 						break;
 						
 					case 2:
 						partida = new Partida(Partida.tipos_dificultad.avanzado);
-						break;	
+						dificultad = Partida.tipos_dificultad.avanzado;
+						imageIcon = new ImageIcon(getClass().getClassLoader().getResource("images/Hangman sprite 10/hangman06i.jpg"));
+						image = imageIcon.getImage();
+
+						
+						newimg = image.getScaledInstance(panelImagen.getSize().height, panelImagen.getSize().width,  java.awt.Image.SCALE_SMOOTH);
+			
+						panelImagen.add(new JLabel(new ImageIcon(newimg)));
+						
+						break;
 				}
 				
 				panelInicio.setVisible(false);
 				imagenesPistas();
+				
+
 				panelJuego.setVisible(true);
 				
 				lblPalabraOculta.setText(partida.getPalabraOculta());
@@ -318,12 +355,17 @@ public class AhorcadoWindow {
 			public void actionPerformed(ActionEvent e) {
 				if (partida.getIntentos() <= 1)
 				{
-					partida.finalizarPartida(panelJuego, panelInicio, false);
+					actualizarHangman(partida.getIntentos() - 1);
+					partida.finalizarPartida(panelJuego, panelInicio, panelImagen, false);
 					visibilidadBotones(true);
 				}
 				else
 				{
-					partida.comprobarLetra(btn);
+					if (partida.comprobarLetra(btn) == false)
+					{
+						actualizarHangman(partida.getIntentos());
+					}
+					
 					lbl.setText(partida.getPalabraOculta());
 				}
 				
@@ -353,6 +395,66 @@ public class AhorcadoWindow {
 			((JButton) components[i]).setIcon(new ImageIcon(newimg));
 		}
 
+	}
+	
+	private void actualizarHangman(int intentos) {
+		String imagename;
+		ImageIcon imageIcon;
+		Image image;
+		Image newimg;
+		
+		switch (dificultad) {
+			case principiante:
+				imagename = "images/Hangman sprite 10/hangman0" + (intentos) + "i.jpg"; 
+				imageIcon = new ImageIcon(getClass().getClassLoader().getResource(imagename));
+				System.out.println(imagename);
+				image = imageIcon.getImage();
+
+				newimg = image.getScaledInstance(panelImagen.getSize().height, panelImagen.getSize().width,  java.awt.Image.SCALE_SMOOTH);
+	
+				panelImagen.removeAll();
+				panelImagen.revalidate();
+
+				panelImagen.add(new JLabel(new ImageIcon(newimg)));
+				
+				panelImagen.repaint();
+				
+				break;
+				
+			case intermedio:
+				imagename = "images/Hangman sprite 10/hangman0" + (intentos) + "i.jpg"; 
+				imageIcon = new ImageIcon(getClass().getClassLoader().getResource(imagename));
+				System.out.println(imagename);
+				image = imageIcon.getImage();
+				
+				newimg = image.getScaledInstance(panelImagen.getSize().height, panelImagen.getSize().width,  java.awt.Image.SCALE_SMOOTH);
+	
+				panelImagen.removeAll();
+				panelImagen.revalidate();
+
+				panelImagen.add(new JLabel(new ImageIcon(newimg)));
+				
+				panelImagen.repaint();
+			
+				break;
+				
+			case avanzado:
+				imagename = "images/Hangman sprite 10/hangman0" + (intentos) + "i.jpg"; 
+				imageIcon = new ImageIcon(getClass().getClassLoader().getResource(imagename));
+				System.out.println(imagename);
+				image = imageIcon.getImage();
+				
+				newimg = image.getScaledInstance(panelImagen.getSize().height, panelImagen.getSize().width,  java.awt.Image.SCALE_SMOOTH);
+	
+				panelImagen.removeAll();
+				panelImagen.revalidate();
+
+				panelImagen.add(new JLabel(new ImageIcon(newimg)));
+				
+				panelImagen.repaint();
+				
+				break;
+		}
 	}
 }
 
