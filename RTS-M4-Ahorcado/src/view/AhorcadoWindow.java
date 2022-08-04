@@ -251,6 +251,10 @@ public class AhorcadoWindow {
 		JButton btnAbout = new JButton("About");
 		btnAbout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Este juego trata de adivinar la palabra. Tienes qué escoger una dificultad, "
+                        + "según las vidas qué quieras tener (Princ = 10, Inter = 8, Avan = 6). "
+                        + "Puedes usar pistas, pero te quitarán una vida si son usadas."
+                        + " Pierdes cuándo el dibujo en pantalla llegue a completarse");
 			}
 		});
 		
