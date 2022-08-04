@@ -53,10 +53,16 @@ public class AhorcadoWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.setBackground(new Color(240, 240, 240));
 		frame.setBounds(100, 100, 571, 420);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		
+		JPanel panelJuego = new JPanel();
+		panelJuego.setBounds(10, 0, 549, 371);
+		frame.getContentPane().add(panelJuego);
+		panelJuego.setLayout(new GridLayout(1, 0, 25, 0));
 		
 		JLabel lblMenu = new JLabel("Menu");
 		lblMenu.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -213,20 +219,17 @@ public class AhorcadoWindow {
 		
 		panelLetras.add(btnZ);
 		
-		JPanel panelIniciar = new JPanel();
-		panelIniciar.setBounds(10, 36, 163, 77);
-		panelIniciar.setLayout(new GridLayout(2, 0, 0, 2));
-		
 		JButton btnResolver = new JButton("Resolver");
-		
-		JButton btnIniciar = new JButton("Iniciar juego");
+		btnResolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		
 		JPanel panel_menu = new JPanel();
 		panel_menu.setBounds(1, 11, 179, 120);
-		panel_menu.setLayout(new GridLayout(3, 0, 0, 0));
+		panel_menu.setLayout(new GridLayout(2, 0, 0, 0));
 		panel_menu.add(lblMenu);
 		panel_menu.add(btnResolver);
-		panel_menu.add(btnIniciar);
 		
 		JPanel panel_palabra = new JPanel();
 		panel_palabra.setBounds(1, 142, 167, 142);
@@ -270,26 +273,49 @@ public class AhorcadoWindow {
 		panel_teclado.add(panelLetras, BorderLayout.CENTER);
 		
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(10, 11, 250, 360);
-		frame.getContentPane().add(panel);
-		panel.setLayout(new BorderLayout(0, 10));
+		JPanel panelMecanicas = new JPanel();
+		panelJuego.add(panelMecanicas);
+		panelMecanicas.setLayout(new BorderLayout(0, 10));
 		
-		panel.add(panel_menu, BorderLayout.NORTH);
-		panel.add(panel_palabra, BorderLayout.CENTER);
-		panel.add(panel_teclado, BorderLayout.SOUTH);
+		panelMecanicas.add(panel_menu, BorderLayout.NORTH);
+		panelMecanicas.add(panel_palabra, BorderLayout.CENTER);
+		panelMecanicas.add(panel_teclado, BorderLayout.SOUTH);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(294, 11, 208, 360);
-		frame.getContentPane().add(panel_1);
-		panel_1.setLayout(new GridLayout(1, 0, 0, 0));
+		JPanel panelImagen = new JPanel();
+		panelJuego.add(panelImagen);
+		panelImagen.setLayout(new GridLayout(1, 0, 0, 0));
+		
+		panelJuego.setVisible(false);
+		
+
+		JPanel panelInicio = new JPanel();
+		panelInicio.setBounds(12, 0, 547, 383);
+		frame.getContentPane().add(panelInicio);
+		panelInicio.setLayout(null);
+		
+		JButton btnAbout = new JButton("About");
+		btnAbout.setBounds(218, 256, 117, 25);
+		panelInicio.add(btnAbout);
+		
+		JButton btnPlay = new JButton("Play");
+		btnPlay.setBounds(218, 205, 117, 25);
+		panelInicio.add(btnPlay);
+		
+		JLabel lblHangmanV = new JLabel("Hangman v1.0\n");
+		lblHangmanV.setFont(new Font("URW Gothic", Font.BOLD, 33));
+		lblHangmanV.setBounds(152, 100, 265, 37);
+		panelInicio.add(lblHangmanV);
+		
+		JLabel lblByNicoPau = new JLabel("by  Nico, Pau & Joel");
+		lblByNicoPau.setBounds(202, 139, 226, 15);
+		panelInicio.add(lblByNicoPau);
 		
 		/*
 		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 		InputStream input = classLoader.getResourceAsStream("/images/hangman_sprite/hangman00i.jpg");
 		try {
 			Image logo = ImageIO.read(input);
-			panel_1.add(logo);
+			panelImagen.add(logo);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
