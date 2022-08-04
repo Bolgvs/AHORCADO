@@ -258,7 +258,7 @@ public class AhorcadoWindow {
 		panel_palabra.add(lblPalabraSecreta);
 		panel_palabra.add(panelLetras_1);
 		
-		JLabel lblPalabraOculta = new JLabel("_ _ _ _ _ _ _ _ _ _");
+		JLabel lblPalabraOculta = new JLabel("");
 		lblPalabraOculta.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblPalabraOculta.setForeground(Color.WHITE);
 		panelLetras_1.add(lblPalabraOculta);
