@@ -151,7 +151,7 @@ public class Partida {
 		System.out.println(this.palabra);
 		
 		// Dummy
-		actualizarPalabraOculta('Â½');
+		actualizarPalabraOculta('½');
 	}
 	
 	/*
@@ -166,7 +166,7 @@ public class Partida {
 		System.out.println(this.palabra);
 
 		// Dummy
-		actualizarPalabraOculta('Â½');
+		actualizarPalabraOculta('½');
 
 	}
 
