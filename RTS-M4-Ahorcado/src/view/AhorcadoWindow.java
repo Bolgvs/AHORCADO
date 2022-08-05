@@ -18,6 +18,7 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Hashtable;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -33,6 +34,7 @@ public class AhorcadoWindow {
 	private JPanel panel_pistas;
 	private JPanel panelImagen;
 	private JLabel lblPalabraOculta;
+	private Hashtable<Character, JButton> botonesTeclado = new Hashtable<>();
 	
 	int imagenahora = 0;
 	
@@ -73,7 +75,7 @@ public class AhorcadoWindow {
 		frame.getContentPane().setLayout(null);
 		
 		panelJuego = new JPanel();
-		panelJuego.setBounds(0, 0, 560, 380);
+		panelJuego.setBounds(12, 10, 520, 360);
 		frame.getContentPane().add(panelJuego);
 		panelJuego.setLayout(new GridLayout(1, 0, 30, 0));
 		
@@ -285,6 +287,7 @@ public class AhorcadoWindow {
 			btnTecla.setBounds(10, 308, 46, 23);
 			clickBotonTeclado(btnTecla, lblPalabraOculta);
 			p.add(btnTecla);
+			botonesTeclado.put(alfabeto[i], btnTecla);
 		}
 	}
 	
@@ -314,7 +317,7 @@ public class AhorcadoWindow {
 				public void actionPerformed(ActionEvent arg0) {
 					if(partida.hasPista()) {
 						btnPista.setVisible(false);
-						partida.usarPista();
+						partida.usarPista(botonesTeclado);
 						lblPalabraOculta.setText(partida.getPalabraOculta());
 					}
 				}

@@ -2,6 +2,7 @@ package logic;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Random;
 
@@ -171,7 +172,7 @@ public class Partida {
 		actualizarPalabraOculta('½');
 	}
 	
-	public void usarPista() {
+	public void usarPista(Hashtable<Character, JButton> a) {
 		if(intentos!=0) {
 			boolean loop = true;
 			int i = 0;
@@ -180,11 +181,14 @@ public class Partida {
 					letras.add(palabra.charAt(i));
 					actualizarPalabraOculta(palabra.charAt(i));
 					loop = false;
+					JButton btn = a.get(palabra.charAt(i));
+					btn.setEnabled(false);
 				}
 				i++;
 			}while(i<palabra.length() && loop);
 			intentos--;
 			pista = false;
+			
 		}
 	}
 
